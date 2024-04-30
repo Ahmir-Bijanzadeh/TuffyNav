@@ -5,9 +5,88 @@ from PIL import Image, ImageTk
 
 customtkinter.set_default_color_theme("blue")
 
-#def BFS_algo 
-#def DFS_algo
-#def Dijkestra_algo
+class Graph:
+    def __init__(self):
+        self.nodes = set()
+        self.edges = {}
+
+    def add_node(self, value):
+        self.nodes.add(value)
+
+    def add_edge(self, from_node, to_node, weight):
+        self.add_node(from_node)
+        self.add_node(to_node)
+        self.edges.setdefault(from_node, []).append((to_node, weight))
+        self.edges.setdefault(to_node, []).append((from_node, weight))
+
+def dijkstra(graph, start, end):
+    distances = {node: float('inf') for node in graph.nodes}
+    distances[start] = 0
+
+    #queue to hold nodes with their current known shortest distance from start
+    priority_queue = [(0, start)]
+
+    #keep track of the previous node in the shortest path
+    previous_node = {node: None for node in graph.nodes}
+
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+
+        if current_node == end:
+            break
+
+        if current_distance > distances[current_node]:
+            continue
+
+        for neighbor, weight in graph.edges[current_node]:
+            distance = current_distance + weight
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                previous_node[neighbor] = current_node
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    path = []
+    node = end
+    while node:
+        path.append(node)
+        node = previous_node[node]
+    path.reverse()
+
+    return distances[end], path
+
+#Breadth First Search
+def bfs(graph, start, end):
+    queue = deque()
+    visited = set()
+    queue.append((start, [start]))
+
+    while queue:
+        current_node, path = queue.popleft()
+        if current_node == end:
+            return path
+    
+        for neighbor, _ in graph.edges[current_node]:
+            if neighbor not in visited:
+                queue.append((neighbor, path + [neighbor]))
+
+    return []
+
+
+#DFS
+def dfs(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return [path]
+    if start not in graph.nodes:
+        return []
+    paths = []
+    for neighbor, _ in graph.edges[start]:
+        if neighbor not in path:
+            new_paths = dfs(graph, neighbor, end, path)
+            for new_path in new_paths:
+                paths.append(new_path)
+    return paths
+#End of algorithms
 
 def click_marker_event(marker):
     print("marker clicked:", marker.text)
@@ -33,7 +112,61 @@ class App(customtkinter.CTk):
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images")
         self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "tuffy2.png")), size=(26, 26))
         
-        nodeList = ["nutwood","arboretum"]
+        List = ["Mihaylo Hall", "Langsdorf Hall", "University Hall", "McCarthy Hall", "Dan Black Hall", "Art Center", "H-S Sciences",
+                    "EC", "Pollak Library", "Visual Arts Building", "TSU", "ECS", "REC Center", "Gym", "Health Center"]
+        #sorts List A-Z
+        nodeList = sorted(List) 
+
+        def new_path():
+            graph = Graph()
+            graph.add_edge('Mihaylo Hall', 'Langsdorf Hall', 5)
+            graph.add_edge('Mihaylo Hall', 'University Hall', 10)
+            graph.add_edge('Langsdorf Hall', 'University Hall', 5)
+            graph.add_edge('Langsdorf Hall', 'Dan Black Hall', 5)
+            graph.add_edge('Langsdorf Hall', 'McCarthy Hall', 10)
+            graph.add_edge('University Hall', 'McCarthy Hall', 5)
+            graph.add_edge('University Hall', 'H-S Sciences', 3)
+            graph.add_edge('McCarthy Hall', 'Art Center', 20)
+            graph.add_edge('McCarthy Hall', 'Dan Black Hall', 1)
+            graph.add_edge('McCarthy Hall', 'Pollak Library', 100)
+            graph.add_edge('McCarthy Hall', 'H-S Sciences', 20)
+            graph.add_edge('Visual Arts', 'TSU', 15)
+            graph.add_edge('Visual Arts', 'Art Center', 15)
+            graph.add_edge('Art Center', 'Pollak Library', 15)
+            graph.add_edge('Art Center', 'EC', 100)
+            graph.add_edge('Art Center', 'H-S Sciences', 100)
+            graph.add_edge('EC ', 'ECS', 20)
+            graph.add_edge('Pollak Library', 'Health Center', 25)
+            graph.add_edge('Pollak Library', 'Gym', 10)
+            graph.add_edge('Pollak Library', 'REC Center', 15)
+            graph.add_edge('Pollak Library', 'TSU', 30)
+            graph.add_edge('TSU', 'REC Center', 15)
+            graph.add_edge('REC Center', 'Gym', 5)
+            graph.add_edge('Gym', 'Health Center', 20)
+            graph.add_edge('Health Center', 'ECS', 10)
+            graph.add_edge('EC ', 'H-S Sciences', 3)
+            start = self.optionmenu_startLoc.get()
+            end = self.optionmenu_endLoc.get()
+            shortest_distance, shortest_path = dijkstra(graph, start, end)
+            bfspaths = bfs(graph, start, end)
+            bfspath = []
+            for i in range(len(bfspaths)):
+                for j in range(len(markers)):
+                    if markers[j].text is bfspaths[i]:
+                        bfspath.append(markers[j])
+            
+            for n in range(len(bfspath)-1):
+                path_6 = self.map_widget.set_path([bfspath[n].position, bfspath[n+1].position],width=12, color= 'black')
+
+            dijkstrapath = []
+            for i in range(len(shortest_path)):
+                for j in range(len(markers)):
+                    if markers[j].text is shortest_path[i]:
+                        dijkstrapath.append(markers[j])
+                        
+            for n in range(len(dijkstrapath)-1):
+                path_5 = self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=7, color= 'red')
+
 
 
         # ============ create two CTkFrames ============
@@ -54,11 +187,15 @@ class App(customtkinter.CTk):
         
         self.optionmenu_startLoc = customtkinter.CTkOptionMenu(master=self.frame_left, dynamic_resizing=False, values=nodeList)
         self.optionmenu_startLoc.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.optionmenu_startLoc.set("starting location")
+        self.optionmenu_startLoc.set("Starting Location")
         
         self.optionmenu_endLoc = customtkinter.CTkOptionMenu(master=self.frame_left, dynamic_resizing=False, values=nodeList)
         self.optionmenu_endLoc.grid(row=1, column=0, padx=20, pady=(20, 10))
-        self.optionmenu_endLoc.set("ending location")
+        self.optionmenu_endLoc.set("Ending Location")
+
+         #submit button
+        self.submit_button = customtkinter.CTkButton(master=self.frame_left, text="Submit", command=new_path)
+        self.submit_button.grid(row=2, column=0)
 
         #label and theme ver, could be moved into a settings popup window dialog?
         self.map_label = customtkinter.CTkLabel(self.frame_left, text="Tile Server:", anchor="w")
@@ -112,7 +249,8 @@ class App(customtkinter.CTk):
         REC_Center = self.map_widget.set_marker(33.88335255103566, -117.88782583780849, text = "REC Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Gym = self.map_widget.set_marker(33.882798357595945, -117.8861484851946, text = "Gym", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Health_Center = self.map_widget.set_marker(33.88315934073165, -117.884411671363, text = "Health Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
-        
+
+        markers = [ mihaylo, langsdorf, university_hall, McCarthy, dan_black, art_center, h_s_science, ec, Pollak, Visual_Arts, tsu, ecs, REC_Center, Gym, Health_Center]
         # new waypoints between gym and rec center
         waypoint1 = (33.882602650147476, -117.8868106853238)
         waypoint2 = (33.88261935054992, -117.88730689397043)
