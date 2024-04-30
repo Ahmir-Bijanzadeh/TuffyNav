@@ -2,6 +2,8 @@ import customtkinter
 from tkintermapview import TkinterMapView
 import os
 from PIL import Image, ImageTk
+import heapq
+from collections import deque
 
 customtkinter.set_default_color_theme("blue")
 
@@ -148,15 +150,15 @@ class App(customtkinter.CTk):
             start = self.optionmenu_startLoc.get()
             end = self.optionmenu_endLoc.get()
             shortest_distance, shortest_path = dijkstra(graph, start, end)
-            bfspaths = bfs(graph, start, end)
-            bfspath = []
-            for i in range(len(bfspaths)):
-                for j in range(len(markers)):
-                    if markers[j].text is bfspaths[i]:
-                        bfspath.append(markers[j])
+            #bfspaths = bfs(graph, start, end)
+            #bfspath = []
+            #for i in range(len(bfspaths)):
+            #   for j in range(len(markers)):
+            #       if markers[j].text is bfspaths[i]:
+            #           bfspath.append(markers[j])
             
-            for n in range(len(bfspath)-1):
-                path_6 = self.map_widget.set_path([bfspath[n].position, bfspath[n+1].position],width=12, color= 'black')
+            #for n in range(len(bfspath)-1):
+            #   path_6 = self.map_widget.set_path([bfspath[n].position, bfspath[n+1].position],width=12, color= 'black')
 
             dijkstrapath = []
             for i in range(len(shortest_path)):
