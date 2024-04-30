@@ -147,6 +147,7 @@ class App(customtkinter.CTk):
             graph.add_edge('Gym', 'Health Center', 20)
             graph.add_edge('Health Center', 'ECS', 10)
             graph.add_edge('EC ', 'H-S Sciences', 3)
+            #saves user selection to start and end
             start = self.optionmenu_startLoc.get()
             end = self.optionmenu_endLoc.get()
             shortest_distance, shortest_path = dijkstra(graph, start, end)
