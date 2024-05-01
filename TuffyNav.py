@@ -401,6 +401,12 @@ class App(customtkinter.CTk):
         REC_Center = self.map_widget.set_marker(33.88335255103566, -117.88782583780849, text = "REC Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Gym = self.map_widget.set_marker(33.882798357595945, -117.8861484851946, text = "Gym", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Health_Center = self.map_widget.set_marker(33.88315934073165, -117.884411671363, text = "Health Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        arboretum = self.map_widget.set_marker(33.884544550336955, -117.883457701246513, text = "Arboretum", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        lotD= self.map_widget.set_marker(33.88409886074794, -117.88781307685497, text = "Lot D Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        eastParking = self.map_widget.set_marker(33.88152838780693, -117.88164928744573, text = "East Side Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        nutwoodpark = self.map_widget.set_marker(33.879135218086454, -117.88842651662075, text = "Nutwood Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        
+        
         image_2= ImageTk.PhotoImage(Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "images", "dash.png")).resize((35, 35))) 
 
     
