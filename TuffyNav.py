@@ -4,12 +4,9 @@ import os
 from PIL import Image, ImageTk
 import heapq
 from collections import deque
-<<<<<<< HEAD
 
 from PIL import Image
 
-=======
->>>>>>> a0a24ec01b634e1642f9f99218a5a442475383b9
 
 customtkinter.set_default_color_theme("blue")
 
@@ -125,7 +122,6 @@ class App(customtkinter.CTk):
         #sorts List A-Z
         nodeList = sorted(List) 
 
-<<<<<<< HEAD
 
         # ------- transparent marker for waypoints -------
 
@@ -306,52 +302,10 @@ class App(customtkinter.CTk):
 
             graph.add_edge('EC ', 'H-S Sciences', 3)
 
-=======
-        def new_path():
-            graph = Graph()
-            graph.add_edge('Mihaylo Hall', 'Langsdorf Hall', 5)
-            graph.add_edge('Mihaylo Hall', 'University Hall', 10)
-            graph.add_edge('Langsdorf Hall', 'University Hall', 5)
-            graph.add_edge('Langsdorf Hall', 'Dan Black Hall', 5)
-            graph.add_edge('Langsdorf Hall', 'McCarthy Hall', 10)
-            graph.add_edge('University Hall', 'McCarthy Hall', 5)
-            graph.add_edge('University Hall', 'H-S Sciences', 3)
-            graph.add_edge('McCarthy Hall', 'Art Center', 20)
-            graph.add_edge('McCarthy Hall', 'Dan Black Hall', 1)
-            graph.add_edge('McCarthy Hall', 'Pollak Library', 100)
-            graph.add_edge('McCarthy Hall', 'H-S Sciences', 20)
-            graph.add_edge('Visual Arts', 'TSU', 15)
-            graph.add_edge('Visual Arts', 'Art Center', 15)
-            graph.add_edge('Art Center', 'Pollak Library', 15)
-            graph.add_edge('Art Center', 'EC', 100)
-            graph.add_edge('Art Center', 'H-S Sciences', 100)
-            graph.add_edge('EC ', 'ECS', 20)
-            graph.add_edge('Pollak Library', 'Health Center', 25)
-            graph.add_edge('Pollak Library', 'Gym', 10)
-            graph.add_edge('Pollak Library', 'REC Center', 15)
-            graph.add_edge('Pollak Library', 'TSU', 30)
-            graph.add_edge('TSU', 'REC Center', 15)
-            graph.add_edge('REC Center', 'Gym', 5)
-            graph.add_edge('Gym', 'Health Center', 20)
-            graph.add_edge('Health Center', 'ECS', 10)
-            graph.add_edge('EC ', 'H-S Sciences', 3)
->>>>>>> a0a24ec01b634e1642f9f99218a5a442475383b9
             #saves user selection to start and end
             start = self.optionmenu_startLoc.get()
             end = self.optionmenu_endLoc.get()
             shortest_distance, shortest_path = dijkstra(graph, start, end)
-<<<<<<< HEAD
-=======
-            #bfspaths = bfs(graph, start, end)
-            #bfspath = []
-            #for i in range(len(bfspaths)):
-            #   for j in range(len(markers)):
-            #       if markers[j].text is bfspaths[i]:
-            #           bfspath.append(markers[j])
-            
-            #for n in range(len(bfspath)-1):
-            #   path_6 = self.map_widget.set_path([bfspath[n].position, bfspath[n+1].position],width=12, color= 'black')
->>>>>>> a0a24ec01b634e1642f9f99218a5a442475383b9
 
             dijkstrapath = []
             for i in range(len(shortest_path)):
@@ -432,12 +386,8 @@ class App(customtkinter.CTk):
         Gym = self.map_widget.set_marker(33.882798357595945, -117.8861484851946, text = "Gym", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Health_Center = self.map_widget.set_marker(33.88315934073165, -117.884411671363, text = "Health Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
 
-<<<<<<< HEAD
     
         
-=======
-        markers = [ mihaylo, langsdorf, university_hall, McCarthy, dan_black, art_center, h_s_science, ec, Pollak, Visual_Arts, tsu, ecs, REC_Center, Gym, Health_Center]
->>>>>>> a0a24ec01b634e1642f9f99218a5a442475383b9
         # new waypoints between gym and rec center
         waypoint1 = self.map_widget.set_marker(33.882602650147476, -117.8868106853238, icon=transparent_icon_image, text="Waypoint 1", text_color=background_color, font=("Helvetica", tiny_font_size))
         waypoint2 = self.map_widget.set_marker(33.88261935054992, -117.88730689397043, icon=transparent_icon_image, text="Waypoint 2", text_color=background_color, font=("Helvetica", tiny_font_size))
