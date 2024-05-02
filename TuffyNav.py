@@ -9,6 +9,11 @@ from PIL import Image
 
 
 customtkinter.set_default_color_theme("blue")
+#global varibles for clear function
+
+dijpath = []
+pathbfs = []
+pathdfs = []
 
 class Graph:
     def __init__(self):
@@ -316,7 +321,7 @@ class App(customtkinter.CTk):
                     if markers[j].text is bfspath[i]:
                         bfs_path.append(markers[j])
             for n in range(len(bfs_path)-1):
-                path_000 = self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=11, color= 'black')
+                bfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=11, color= 'black'))
 
             shortest_distance, shortest_path = dijkstra(graph, start, end)            
             dijkstrapath = []
@@ -326,10 +331,15 @@ class App(customtkinter.CTk):
                         dijkstrapath.append(markers[j])
                         
             for n in range(len(dijkstrapath)-1):
-                path_5 = self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red')
+                path_5.append(self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red'))
             
         def clear_path():
-            self.destroy()
+            for n in path_5:
+                n.delete() 
+            for n in path_000:
+                n.delete()
+            for n in path_dfs:
+                n.delete()
             
             
         def quit():
