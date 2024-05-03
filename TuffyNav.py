@@ -124,7 +124,7 @@ class App(customtkinter.CTk):
                     "EC", "Pollak Library", "Visual Arts Building", "TSU", "ECS", "REC Center", "Gym", "Health Center", "Lot D Parking", "Arboretum", "East Side Parking", "Nutwood Parking"]
         #sorts List A-Z
         nodeList = sorted(List)
-        algoList = ["BFS","DFS","Djkestras"]
+        algoList = ["BFS","DFS","Dijkstra"]
 
 
 
@@ -366,25 +366,28 @@ class App(customtkinter.CTk):
             start = self.optionmenu_startLoc.get()
             end = self.optionmenu_endLoc.get()
 
-            
-            bfspath= bfs(graph, start, end)
-            bfs_path = []
-            for i in range(len(bfspath)):
-                for j in range(len(markers)):
-                    if markers[j].text is bfspath[i]:
-                        bfs_path.append(markers[j])
-            for n in range(len(bfs_path)-1):
-                pathbfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=11, color= 'black'))
+            algorithm = self.optionmenu_algo.get()
 
-            shortest_distance, shortest_path = dijkstra(graph, start, end)            
-            dijkstrapath = []
-            for i in range(len(shortest_path)):
-                for j in range(len(markers)):
-                    if markers[j].text is shortest_path[i]:
-                        dijkstrapath.append(markers[j])
+            if algorithm == "BFS":
+                bfspath= bfs(graph, start, end)
+                bfs_path = []
+                for i in range(len(bfspath)):
+                    for j in range(len(markers)):
+                        if markers[j].text is bfspath[i]:
+                            bfs_path.append(markers[j])
+                for n in range(len(bfs_path)-1):
+                    pathbfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=11, color= 'black'))
+
+            elif algorithm == "Dijkstra":
+                shortest_distance, shortest_path = dijkstra(graph, start, end)            
+                dijkstrapath = []
+                for i in range(len(shortest_path)):
+                    for j in range(len(markers)):
+                        if markers[j].text is shortest_path[i]:
+                            dijkstrapath.append(markers[j])
                         
-            for n in range(len(dijkstrapath)-1):
-                pathdij.append(self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red'))
+                for n in range(len(dijkstrapath)-1):
+                    pathdij.append(self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red'))
 
 
         
