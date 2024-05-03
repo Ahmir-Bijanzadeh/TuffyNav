@@ -81,19 +81,21 @@ def bfs(graph, start, end):
 
 
 #DFS
-def dfs(graph, start, end, path=[]):
+def dfs(graph, start, end, path=[], shortest_paths=[], shortest_lengths=[]):
     path = path + [start]
     if start == end:
-        return [path]
+        # If the current path reaches the end, append it to the list of paths
+        shortest_paths.append(path)
+        # Keep track of the length of this path
+        shortest_lengths.append(len(path))
+        return shortest_paths, shortest_lengths
     if start not in graph.nodes:
-        return []
-    paths = []
+        return shortest_paths, shortest_lengths
     for neighbor, _ in graph.edges[start]:
         if neighbor not in path:
-            new_paths = dfs(graph, neighbor, end, path)
-            for new_path in new_paths:
-                paths.append(new_path)
-    return paths
+            # Recursively call dfs on the neighbor node
+            shortest_paths, shortest_lengths = dfs(graph, neighbor, end, path, shortest_paths, shortest_lengths)
+    return shortest_paths, shortest_lengths
 #End of algorithms
 
 def click_marker_event(marker):
