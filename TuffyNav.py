@@ -92,8 +92,8 @@ def dfs(graph, start, end, path=[], shortest_paths=[], shortest_lengths=[]):
     if start not in graph.nodes:
         return shortest_paths, shortest_lengths
     for neighbor, _ in graph.edges[start]:
-        if neighbor not in path:
-            # Recursively call dfs on the neighbor node
+        if neighbor not in path and len(path) + 1 <= min(shortest_lengths or [float('inf')]):
+            # Recursively call dfs on the neighbor node if it's not already in the current path
             shortest_paths, shortest_lengths = dfs(graph, neighbor, end, path, shortest_paths, shortest_lengths)
     return shortest_paths, shortest_lengths
 #End of algorithms
@@ -404,8 +404,9 @@ class App(customtkinter.CTk):
                         for n in range(len(dfssorted[i])):
                             if markers[j].text is dfssorted[i][n]:
                                 dfs_path.append(markers[j])
+                        
                 for n in range(len(dfs_path)-1):
-                    pathdfs.append(self.map_widget.set_path([dfs_path[n].position, dfs_path[n+1].position],width=8, color= 'black'))
+                    pathdfs.append(self.map_widget.set_path([dfs_path[n].position, dfs_path[n+1].position],width=9, color= 'pink'))
                 else:
                     messagebox.showerror("Error", "Select a Valid Algorithm")
 
@@ -415,6 +416,8 @@ class App(customtkinter.CTk):
             for n in pathdij:
                 n.delete() 
             for n in pathbfs:
+                n.delete()
+            for n in pathdfs:
                 n.delete()
             
         def quit():
