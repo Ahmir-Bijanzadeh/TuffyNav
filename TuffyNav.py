@@ -300,6 +300,61 @@ class App(customtkinter.CTk):
             graph.add_edge('Waypoint 43', 'Waypoint 44', 1)
             graph.add_edge('Waypoint 44', 'EC ', 1)
 
+            # Adding new segment: edges with waypoints between Aboretum and Health Center
+            graph.add_edge('Arboretum', 'Waypoint 54', 1)
+            graph.add_edge('Waypoint 54', 'Waypoint 55', 1)
+            graph.add_edge('Waypoint 55', 'Waypoint 56', 1)
+            graph.add_edge('Waypoint 56', 'Waypoint 57', 1)
+            graph.add_edge('Waypoint 57', 'Waypoint 58', 1)
+            graph.add_edge('Waypoint 58', 'Waypoint 59', 1)
+            graph.add_edge('Waypoint 59', 'Waypoint 60', 1)
+            graph.add_edge('Waypoint 60', 'Waypoint 61', 1)
+            graph.add_edge('Waypoint 61', 'Waypoint 62', 1)
+            graph.add_edge('Waypoint 62', 'Waypoint 63', 1)
+            graph.add_edge('Waypoint 63', 'Waypoint 64', 1)
+            graph.add_edge('Waypoint 64', 'Health Center', 1)
+
+            # Adding new segment: edges with waypoints between aboretum and ecs
+            graph.add_edge('Waypoint 63', 'Waypoint 65', 1)
+            graph.add_edge('Waypoint 65', 'Waypoint 66', 1)
+            graph.add_edge('Waypoint 66', 'Waypoint 9', 1)
+            graph.add_edge('Waypoint 9', 'Waypoint 10', 1)
+            graph.add_edge('Waypoint 10', 'Waypoint 11', 1)
+            graph.add_edge('Waypoint 11', 'ECS', 1)
+
+            # Parking LOTS - might need adjustments
+            # Adding new segment: edges with waypoints between lot d and waypoint3
+            graph.add_edge('Lot D Parking', 'Waypoint 67', 1)
+            graph.add_edge('Waypoint 67', 'Waypoint 68', 1)
+            graph.add_edge('Waypoint 68', 'Waypoint 69', 1)
+            graph.add_edge('Waypoint 69', 'Waypoint 3', 1)
+            graph.add_edge('Waypoint 3', 'REC Center', 1)
+
+            # Adding new segment: edges with waypoints between nutwood and waypoint22
+            graph.add_edge('Nutwood Parking', 'Waypoint 70', 1)
+            graph.add_edge('Waypoint 70', 'Waypoint 71', 1)
+            graph.add_edge('Waypoint 71', 'Waypoint 72', 1)
+            graph.add_edge('Waypoint 72', 'Waypoint 22', 1)
+
+            # Adding new segment: edges with waypoints between nutwood and waypoint23
+            graph.add_edge('Nutwood Parking', 'Waypoint 70', 1)
+            graph.add_edge('Waypoint 70', 'Waypoint 71', 1)
+            graph.add_edge('Waypoint 71', 'Waypoint 23', 1)
+
+            # Adding new segment: edges with waypoints between east parking and waypoint 38
+            graph.add_edge('East Side Parking', 'Waypoint 73', 1)
+            graph.add_edge('Waypoint 73', 'Waypoint 74', 1)
+            graph.add_edge('Waypoint 74', 'Waypoint 75', 1)
+            graph.add_edge('Waypoint 75', 'Waypoint 38', 1)
+
+            # Adding new segment: edges with waypoints between east parking and H-S Sciences
+            graph.add_edge('East Side Parking', 'Waypoint 73', 1)
+            graph.add_edge('Waypoint 73', 'Waypoint 76', 1)
+            graph.add_edge('Waypoint 76', 'Waypoint 77', 1)
+            graph.add_edge('Waypoint 77', 'H-S Sciences', 1)
+            
+
+
 
 
             graph.add_edge('EC ', 'H-S Sciences', 3)
@@ -421,7 +476,7 @@ class App(customtkinter.CTk):
         REC_Center = self.map_widget.set_marker(33.88335255103566, -117.88782583780849, text = "REC Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Gym = self.map_widget.set_marker(33.882798357595945, -117.8861484851946, text = "Gym", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         Health_Center = self.map_widget.set_marker(33.88315934073165, -117.884411671363, text = "Health Center", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
-        arboretum = self.map_widget.set_marker(33.884544550336955, -117.883457701246513, text = "Arboretum", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
+        arboretum = self.map_widget.set_marker(33.88818588748605, -117.88429074425441, text = "Arboretum", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         lotD= self.map_widget.set_marker(33.88409886074794, -117.88781307685497, text = "Lot D Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         eastParking = self.map_widget.set_marker(33.88152838780693, -117.88164928744573, text = "East Side Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
         nutwoodpark = self.map_widget.set_marker(33.879135218086454, -117.88842651662075, text = "Nutwood Parking", icon = image_1, font=("Helvetica Bold", 12), text_color="black")
@@ -733,19 +788,102 @@ class App(customtkinter.CTk):
             waypoint53.position,
             h_s_science.position
         ], width=5)
-        # path_26 = self.map_widget.set_path([
-        #     ec.position,
-        #     waypoint36,
-        #     waypoint53,
-        #     h_s_science.position
-        # ], width=5)
+
+        # new waypoints between aboretum and health center path 27
+        waypoint54 = self.map_widget.set_marker(33.88833380054055, -117.88497414862087, icon=transparent_icon_image, text="Waypoint 54", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint55 = self.map_widget.set_marker(33.88829842375198, -117.88543555833662, icon=transparent_icon_image, text="Waypoint 55", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint56 = self.map_widget.set_marker(33.8877863106844, -117.88538727857318, icon=transparent_icon_image, text="Waypoint 56", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint57 = self.map_widget.set_marker(33.887695020640784, -117.88507882452892, icon=transparent_icon_image, text="Waypoint 57", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint58 = self.map_widget.set_marker(33.8876270497033, -117.88477257704568, icon=transparent_icon_image, text="Waypoint 58", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint59 = self.map_widget.set_marker(33.88747230159433, -117.88468674636232, icon=transparent_icon_image, text="Waypoint 59", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint60 = self.map_widget.set_marker(33.88629359801868, -117.88428332320983, icon=transparent_icon_image, text="Waypoint 60", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint61 = self.map_widget.set_marker(33.88590738260554, -117.88414520770449, icon=transparent_icon_image, text="Waypoint 61", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint62 = self.map_widget.set_marker(33.88418591501567, -117.88393095039879, icon=transparent_icon_image, text="Waypoint 62", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint63 = self.map_widget.set_marker(33.88336208364891, -117.88383360903443, icon=transparent_icon_image, text="Waypoint 63", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint64 = self.map_widget.set_marker(33.88341400207791, -117.88423565296432, icon=transparent_icon_image, text="Waypoint 64", text_color=background_color, font=("Helvetica", tiny_font_size))
+        
+        path_27 = self.map_widget.set_path([
+            arboretum.position,
+            waypoint54.position,
+            waypoint55.position,
+            waypoint56.position,
+            waypoint57.position,
+            waypoint58.position,
+            waypoint59.position,
+            waypoint60.position,
+            waypoint61.position,
+            waypoint62.position,
+            waypoint63.position,
+            waypoint64.position,
+            Health_Center.position
+        ], width=5)
+
+        # # new waypoints between aboretum and ecs
+        waypoint65 = self.map_widget.set_marker(33.88271757345799, -117.88370616242403, icon=transparent_icon_image, text="Waypoint 65", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint66 = self.map_widget.set_marker(33.88255074750527, -117.88357857434107, icon=transparent_icon_image, text="Waypoint 66", text_color=background_color, font=("Helvetica", tiny_font_size))
+
+        path_28 = self.map_widget.set_path([
+            waypoint63.position,
+            waypoint65.position,
+            waypoint66.position,
+            waypoint9.position,
+            waypoint10.position,
+            waypoint11.position,
+            ecs.position
+        ], width=5)
+
+        # # new waypoints between lot d and rec center
+        waypoint67 = self.map_widget.set_marker(33.88365534168906, -117.88754563793114, icon=transparent_icon_image, text="Waypoint 67", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint68 = self.map_widget.set_marker(33.88365534168906, -117.88754563793114, icon=transparent_icon_image, text="Waypoint 68", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint69 = self.map_widget.set_marker(33.8835307865228, -117.88738576416138, icon=transparent_icon_image, text="Waypoint 69", text_color=background_color, font=("Helvetica", tiny_font_size))
+
+        path_29 = self.map_widget.set_path([
+            lotD.position,
+            waypoint67.position,
+            waypoint68.position,
+            waypoint69.position,
+            waypoint3.position,
+            REC_Center.position
+        ], width=5)
+
+        # # new waypoints between nutwood and visual arts/art center
+        waypoint70 = self.map_widget.set_marker(33.8796080875088, -117.88762919129782, icon=transparent_icon_image, text="Waypoint 70", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint71 = self.map_widget.set_marker(33.87994635484491, -117.88764160089323, icon=transparent_icon_image, text="Waypoint 71", text_color=background_color, font=("Helvetica", tiny_font_size))
+
+
+        # # new waypoints between nutwood and waypoint 23
+        path_30 = self.map_widget.set_path([nutwoodpark.position, waypoint70.position, waypoint71.position, waypoint23.position],width=5)
+        # # new waypoints between nutwood and waypoint 22
+        waypoint72 = self.map_widget.set_marker(33.87999271625771, -117.88774915071735, icon=transparent_icon_image, text="Waypoint 72", text_color=background_color, font=("Helvetica", tiny_font_size))
+        path_31 = self.map_widget.set_path([nutwoodpark.position, waypoint70.position, waypoint71.position, waypoint72.position, waypoint22.position],width=5)
+
+        # # new waypoints between east side parking and ecs
+        waypoint73 = self.map_widget.set_marker(33.88155831657204, -117.88239096303258, icon=transparent_icon_image, text="Waypoint 73", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint74 = self.map_widget.set_marker(33.881789055112556, -117.88246475092917, icon=transparent_icon_image, text="Waypoint 74", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint75 = self.map_widget.set_marker(33.88212058973531, -117.88251070060252, icon=transparent_icon_image, text="Waypoint 75", text_color=background_color, font=("Helvetica", tiny_font_size))
+
+        path_32 = self.map_widget.set_path([
+            eastParking.position, 
+            waypoint73.position, 
+            waypoint74.position, 
+            waypoint75.position, 
+            waypoint38.position,
+            ecs.position,
+        ], width=5)
+
+        # # new waypoints between east side parking and h-s sciences
+        waypoint76 = self.map_widget.set_marker(33.88061301007453, -117.8824300382329, icon=transparent_icon_image, text="Waypoint 76", text_color=background_color, font=("Helvetica", tiny_font_size))
+        waypoint77 = self.map_widget.set_marker(33.88060442469453, -117.88366686121435, icon=transparent_icon_image, text="Waypoint 77", text_color=background_color, font=("Helvetica", tiny_font_size))
+        path_33 = self.map_widget.set_path([eastParking.position, waypoint73.position, waypoint76.position, waypoint77.position, h_s_science.position],width=5)
 
         markers = [ mihaylo, langsdorf, university_hall, McCarthy, dan_black, art_center, h_s_science, ec, 
                         Pollak, Visual_Arts, tsu, ecs, REC_Center, Gym, Health_Center, waypoint1, waypoint2, waypoint3, 
                         waypoint4, waypoint5, waypoint6, waypoint7, waypoint8, waypoint9, waypoint10, waypoint11, waypoint12,
                         waypoint13, waypoint14, waypoint15, waypoint16, waypoint17, waypoint18, waypoint19, waypoint20, waypoint21, waypoint22, waypoint23, waypoint24, waypoint25, 
                         waypoint26, waypoint27, waypoint28, waypoint29, waypoint30, waypoint31, waypoint32, waypoint33, waypoint34, waypoint35, waypoint36, waypoint37, waypoint38, 
-                        waypoint39, waypoint40, waypoint41, waypoint42, waypoint43, waypoint44, waypoint45, waypoint46, waypoint47, waypoint48, waypoint49, waypoint50, waypoint51, waypoint52, waypoint53]
+                        waypoint39, waypoint40, waypoint41, waypoint42, waypoint43, waypoint44, waypoint45, waypoint46, waypoint47, waypoint48, waypoint49, waypoint50, waypoint51, 
+                        waypoint52, waypoint53, waypoint54, waypoint55, waypoint56, waypoint57, waypoint58, waypoint59, waypoint60, waypoint61, waypoint62, waypoint63, waypoint64,
+                        waypoint65, waypoint66, waypoint67, waypoint68, waypoint69, waypoint70, waypoint71, waypoint72, waypoint73, waypoint74, waypoint75]
 
         # this path is good dont remove or adjust
         path_7 = self.map_widget.set_path([university_hall.position, h_s_science.position],width=5)
