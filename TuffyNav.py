@@ -118,7 +118,7 @@ class App(customtkinter.CTk):
         self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "tuffy2.png")), size=(26, 26))
         
         List = ["Mihaylo Hall", "Langsdorf Hall", "University Hall", "McCarthy Hall", "Dan Black Hall", "Art Center", "H-S Sciences",
-                    "EC", "Pollak Library", "Visual Arts Building", "TSU", "ECS", "REC Center", "Gym", "Health Center"]
+                    "EC", "Pollak Library", "Visual Arts Building", "TSU", "ECS", "REC Center", "Gym", "Health Center", "Lot D Parking", "Arboretum", "East Side Parking", "Nutwood Parking"]
         #sorts List A-Z
         nodeList = sorted(List)
         algoList = ["BFS","DFS","Djkestras"]
