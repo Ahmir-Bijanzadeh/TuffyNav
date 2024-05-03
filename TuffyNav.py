@@ -383,7 +383,7 @@ class App(customtkinter.CTk):
                         if markers[j].text is bfspath[i]:
                             bfs_path.append(markers[j])
                 for n in range(len(bfs_path)-1):
-                    pathbfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=11, color= 'black'))
+                    pathbfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=8, color= 'purple'))
 
             elif algorithm == "Dijkstra":
                 shortest_distance, shortest_path = dijkstra(graph, start, end)            
@@ -395,8 +395,19 @@ class App(customtkinter.CTk):
                         
                 for n in range(len(dijkstrapath)-1):
                     pathdij.append(self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red'))
-            else:
-                messagebox.showerror("Error", "Select a Valid Algorithm")
+            elif algorithm == "DFS":
+                shortpath, length = dfs(graph, start, end)
+                dfssorted = [path for _, path in sorted(zip(length, shortpath))][:3]
+                dfs_path = []
+                for i in range(len(dfssorted)):
+                    for j in range(len(markers)):
+                        for n in range(len(dfssorted[i])):
+                            if markers[j].text is dfssorted[i][n]:
+                                dfs_path.append(markers[j])
+                for n in range(len(dfs_path)-1):
+                    pathdfs.append(self.map_widget.set_path([dfs_path[n].position, dfs_path[n+1].position],width=8, color= 'black'))
+                else:
+                    messagebox.showerror("Error", "Select a Valid Algorithm")
 
 
         
