@@ -149,218 +149,215 @@ class App(customtkinter.CTk):
 
         def new_path():
             graph = Graph()
-            graph.add_edge('University Hall', 'H-S Sciences', 2)
+            graph.add_edge('University Hall', 'H-S Sciences', 200)
 
             # Adding new segment: edges with waypoints between ec and h-s sciences
-            graph.add_edge('EC', 'Waypoint 36', 1)
-            graph.add_edge('Waypoint 36', 'Waypoint 53', 1)
-            graph.add_edge('Waypoint 53', 'H-S Sciences', 0)
+            graph.add_edge('EC', 'Waypoint 36', 163)
+            graph.add_edge('Waypoint 36', 'Waypoint 53', 90)
+            graph.add_edge('Waypoint 53', 'H-S Sciences', 130)
 
             # pollak to h-s sciences
-            graph.add_edge('Waypoint 37', 'Waypoint 78', 1)
-            graph.add_edge('Waypoint 78', 'Waypoint 32', 0)
+            graph.add_edge('Waypoint 37', 'Waypoint 78', 100)
+            graph.add_edge('Waypoint 78', 'Waypoint 32', 50)
             
             # Adding new segment: edges with waypoints between rec center and tsu
             # graph.add_edge('REC Center', 'Waypoint 3', 1)
-            graph.add_edge('Waypoint 3', 'Waypoint 51', 3)
-            graph.add_edge('Waypoint 51', 'Waypoint 52', 4)
-            graph.add_edge('Waypoint 52', 'TSU', 1)
+            graph.add_edge('Waypoint 3', 'Waypoint 51', 200)
+            graph.add_edge('Waypoint 51', 'Waypoint 52', 200)
+            graph.add_edge('Waypoint 52', 'TSU', 300)
 
 
             # Adding new segment: edges with waypoints between art center and pollak library
-            graph.add_edge('Art Center', 'Waypoint 50', 2)
-            graph.add_edge('Waypoint 50', 'Waypoint 49', 2)
-            graph.add_edge('Waypoint 49', 'Waypoint 48', 2)
-            graph.add_edge('Waypoint 48', 'Pollak Library', 1)
+            graph.add_edge('Art Center', 'Waypoint 50', 150)
+            graph.add_edge('Waypoint 50', 'Waypoint 49', 200)
+            graph.add_edge('Waypoint 49', 'Waypoint 48', 150)
+            graph.add_edge('Waypoint 48', 'Pollak Library', 150)
 
             # Adding new segment: edges with waypoints between mcCarthy hall and pollak library
-            graph.add_edge('McCarthy Hall', 'Waypoint 24', 3)
-            graph.add_edge('Waypoint 24', 'Waypoint 47', 1)
-            graph.add_edge('Waypoint 47', 'Waypoint 46', 1)
-            graph.add_edge('Waypoint 46', 'Waypoint 45', 0)
-            graph.add_edge('Waypoint 45', 'Pollak Library', 1)
+            graph.add_edge('McCarthy Hall', 'Waypoint 24', 150)
+            graph.add_edge('Waypoint 24', 'Waypoint 47', 60)
+            graph.add_edge('Waypoint 47', 'Waypoint 46', 90)
+            graph.add_edge('Waypoint 46', 'Waypoint 45', 150)
+            graph.add_edge('Waypoint 45', 'Pollak Library', 190)
 
             # Adding new segment: edges with waypoints between mcCarthy hall and university hall
-            graph.add_edge('McCarthy Hall', 'Waypoint 25', 1)
-            graph.add_edge('Waypoint 25', 'Waypoint 26', 2)
-            graph.add_edge('Waypoint 26', 'Waypoint 27', 1)
-            graph.add_edge('Waypoint 27', 'University Hall', 1)
+            graph.add_edge('McCarthy Hall', 'Waypoint 25', 150)
+            graph.add_edge('Waypoint 25', 'Waypoint 26', 200)
+            graph.add_edge('Waypoint 26', 'Waypoint 27', 180)
+            graph.add_edge('Waypoint 27', 'University Hall', 250)
 
             # Adding new segment: edges with waypoints between ec and art center
-            graph.add_edge('EC', 'Waypoint 36', 1)
-            graph.add_edge('Waypoint 36', 'Waypoint 37', 1)
-            graph.add_edge('Waypoint 37', 'Waypoint 34', 1)
-            graph.add_edge('Waypoint 34', 'Waypoint 35', 1)
-            graph.add_edge('Waypoint 35', 'Waypoint 24', 2)
-            graph.add_edge('Waypoint 24', 'Waypoint 23', 2)
-            graph.add_edge('Waypoint 23', 'Art Center', 4)
+            graph.add_edge('EC', 'Waypoint 36', 200)
+            graph.add_edge('Waypoint 36', 'Waypoint 37', 150)
+            graph.add_edge('Waypoint 37', 'Waypoint 34', 150)
+            graph.add_edge('Waypoint 34', 'Waypoint 35', 220)
+            graph.add_edge('Waypoint 35', 'Waypoint 24', 200)
+            graph.add_edge('Waypoint 24', 'Waypoint 23', 350)
+            graph.add_edge('Waypoint 23', 'Art Center', 220)
 
             # pollak to waypoint 37
-            graph.add_edge('Pollak Library', 'Waypoint 37', 4)
+            graph.add_edge('Pollak Library', 'Waypoint 37', 170)
 
             # Adding new segment: edges with waypoints between h-s sciences and mccarthy hall
-            graph.add_edge('H-S Sciences', 'Waypoint 32', 0)
-            graph.add_edge('Waypoint 32', 'Waypoint 33', 1)
-            graph.add_edge('Waypoint 33', 'Waypoint 34', 0)
-            graph.add_edge('Waypoint 34', 'Waypoint 35', 1)
-            graph.add_edge('Waypoint 35', 'Waypoint 24', 2)
-            graph.add_edge('Waypoint 24', 'McCarthy Hall', 1)
+            graph.add_edge('H-S Sciences', 'Waypoint 32', 150)
+            graph.add_edge('Waypoint 32', 'Waypoint 33', 60)
+            graph.add_edge('Waypoint 33', 'Waypoint 34', 90)
+            graph.add_edge('Waypoint 34', 'Waypoint 35', 200)
+            graph.add_edge('Waypoint 35', 'Waypoint 24', 120)
+            graph.add_edge('Waypoint 24', 'McCarthy Hall', 100)
 
             # Adding new segment: edges with waypoints between mihaylo and university hall
-            graph.add_edge('Mihaylo Hall', 'Waypoint 30', 2)
-            graph.add_edge('Waypoint 30', 'Waypoint 31', 1)
-            graph.add_edge('Waypoint 31', 'University Hall', 1)
+            graph.add_edge('Mihaylo Hall', 'Waypoint 30', 150)
+            graph.add_edge('Waypoint 30', 'Waypoint 31', 30)
+            graph.add_edge('Waypoint 31', 'University Hall', 130)
 
             # Adding new segment: edges with waypoints between langsdorf and mihaylo
-            graph.add_edge('Langsdorf Hall', 'Waypoint 29', 0)
-            graph.add_edge('Waypoint 29', 'Waypoint 30', 2)
-            graph.add_edge('Waypoint 30', 'Mihaylo Hall', 1)
+            graph.add_edge('Langsdorf Hall', 'Waypoint 29', 40)
+            graph.add_edge('Waypoint 29', 'Waypoint 30', 60)
+            graph.add_edge('Waypoint 30', 'Mihaylo Hall', 150)
 
             # Adding new segment: edges with waypoints between langsdorf and university hall
-            graph.add_edge('Langsdorf Hall', 'Waypoint 27', 0)
-            graph.add_edge('Waypoint 27', 'Waypoint 28', 0)
+            graph.add_edge('Langsdorf Hall', 'Waypoint 27', 60)
+            graph.add_edge('Waypoint 27', 'Waypoint 28', 150)
             graph.add_edge('Waypoint 28', 'University Hall', 1)
 
             # Adding new segment: edges with waypoints between Dan Black Hall and Langsdorf Hall
-            graph.add_edge('Dan Black Hall', 'Waypoint 25', 1)
-            graph.add_edge('Waypoint 25', 'Waypoint 26', 1)
-            graph.add_edge('Waypoint 26', 'Waypoint 27', 1)
-            graph.add_edge('Waypoint 27', 'Langsdorf Hall', 0)
+            graph.add_edge('Dan Black Hall', 'Waypoint 25', 60)
+            graph.add_edge('Waypoint 25', 'Waypoint 26', 200)
+            graph.add_edge('Waypoint 26', 'Waypoint 27', 180)
+            graph.add_edge('Waypoint 27', 'Langsdorf Hall', 150)
 
             # Adding new segment: edges with waypoints between McCarthy Hall and Dan Black Hall
-            graph.add_edge('McCarthy Hall', 'Waypoint 25',0 )
-            graph.add_edge('Waypoint 25', 'Dan Black Hall', 0)
+            graph.add_edge('McCarthy Hall', 'Waypoint 25',60 )
+            graph.add_edge('Waypoint 25', 'Dan Black Hall', 60)
 
             # Adding new segment: edges with waypoints between Art Center and McCarthy Hall
-            graph.add_edge('Art Center', 'Waypoint 23', 2)
-            graph.add_edge('Waypoint 23', 'Waypoint 24', 3)
-            graph.add_edge('Waypoint 24', 'McCarthy Hall', 0)
+            graph.add_edge('Art Center', 'Waypoint 23', 190)
+            graph.add_edge('Waypoint 23', 'Waypoint 24', 330)
+            graph.add_edge('Waypoint 24', 'McCarthy Hall', 90)
 
             # Adding new segment: edges with waypoints between Visual Arts and Art Center
-            graph.add_edge('Visual Arts Building', 'Waypoint 22', 0)
-            graph.add_edge('Waypoint 22', 'Art Center', 1)
+            graph.add_edge('Visual Arts Building', 'Waypoint 22', 100)
+            graph.add_edge('Waypoint 22', 'Art Center', 150)
 
             # Adding new segment: edges with waypoints between TSU and Visual Arts
-            graph.add_edge('TSU', 'Waypoint 20', 1)
-            graph.add_edge('Waypoint 20', 'Waypoint 21', 1)
-            graph.add_edge('Waypoint 21', 'Waypoint 22', 2)
-            graph.add_edge('Waypoint 22', 'Visual Arts Building', 0)
+            graph.add_edge('TSU', 'Waypoint 20', 350)
+            graph.add_edge('Waypoint 20', 'Waypoint 21', 200)
+            graph.add_edge('Waypoint 21', 'Waypoint 22', 400)
+            graph.add_edge('Waypoint 22', 'Visual Arts Building', 100)
 
             # Adding new segment: edges with waypoints between TSU and Pollak Library
-            graph.add_edge('TSU', 'Waypoint 17', 0)  # Assuming weight is 1
-            graph.add_edge('Waypoint 17', 'Waypoint 18', 1)
-            graph.add_edge('Waypoint 18', 'Waypoint 19', 4)
-            graph.add_edge('Waypoint 19', 'Pollak Library', 0)
+            graph.add_edge('TSU', 'Waypoint 17', 250)  # Assuming weight is 1
+            graph.add_edge('Waypoint 17', 'Waypoint 18', 30)
+            graph.add_edge('Waypoint 18', 'Waypoint 19', 350)
+            graph.add_edge('Waypoint 19', 'Pollak Library', 150)
 
             # Adding new segment: edges with waypoints between Gym and Pollak Library
             # graph.add_edge('Gym', 'Waypoint 5', 1)  # Assuming weight is 1
-            graph.add_edge('Waypoint 5', 'Waypoint 16', 1)
-            graph.add_edge('Waypoint 16', 'Pollak Library', 3)
+            graph.add_edge('Waypoint 5', 'Waypoint 16', 700)
+            graph.add_edge('Waypoint 16', 'Pollak Library', 300)
 
             # Adding new segment: edges with waypoints between Health Center and Pollak
-            graph.add_edge('Health Center', 'Waypoint 7', 2)
-            graph.add_edge('Waypoint 7', 'Waypoint 12', 1)
-            graph.add_edge('Waypoint 12', 'Waypoint 13', 1)
-            graph.add_edge('Waypoint 13', 'Waypoint 14', 1)
-            graph.add_edge('Waypoint 14', 'Waypoint 15', 1)
-            graph.add_edge('Waypoint 15', 'Pollak Library', 1)
+            graph.add_edge('Health Center', 'Waypoint 7', 200)
+            graph.add_edge('Waypoint 7', 'Waypoint 12', 50)
+            graph.add_edge('Waypoint 12', 'Waypoint 13', 100)
+            graph.add_edge('Waypoint 13', 'Waypoint 14', 100)
+            graph.add_edge('Waypoint 14', 'Waypoint 15', 100)
+            graph.add_edge('Waypoint 15', 'Pollak Library', 100)
             
             # Adding edges with waypoints between Gym and REC Center (previous segment)
-            graph.add_edge('Gym', 'Waypoint 1', 2)  # Assuming weight is 1
-            graph.add_edge('Waypoint 1', 'Waypoint 2', 2)
-            graph.add_edge('Waypoint 2', 'Waypoint 3', 1)
-            graph.add_edge('Waypoint 3', 'REC Center', 1)
+            graph.add_edge('Gym', 'Waypoint 1', 200)  # Assuming weight is 1
+            graph.add_edge('Waypoint 1', 'Waypoint 2', 465)
+            graph.add_edge('Waypoint 2', 'Waypoint 3', 150)
+            graph.add_edge('Waypoint 3', 'REC Center', 200)
 
             # Adding new segment: edges with waypoints between REC Center and Pollak Library
             # graph.add_edge('REC Center', 'Waypoint 3', 100)  # Adjust weight as necessary
             # graph.add_edge('Waypoint 3', 'Waypoint 2', 118)
             # graph.add_edge('Waypoint 2', 'Waypoint 1', 157)
-            graph.add_edge('Waypoint 1', 'Waypoint 4', 4)
-            graph.add_edge('Waypoint 4', 'Pollak Library', 1)
+            graph.add_edge('Waypoint 1', 'Waypoint 4', 600)
+            graph.add_edge('Waypoint 4', 'Pollak Library', 300)
 
             # Adding new segment: edges with waypoints between Gym and Health Center
-            graph.add_edge('Gym', 'Waypoint 5', 2)
-            graph.add_edge('Waypoint 5', 'Waypoint 6', 2)
-            graph.add_edge('Waypoint 6', 'Waypoint 7', 1)
-            graph.add_edge('Waypoint 7', 'Health Center', 2)
+            graph.add_edge('Gym', 'Waypoint 5', 150)
+            graph.add_edge('Waypoint 5', 'Waypoint 6', 220)
+            graph.add_edge('Waypoint 6', 'Waypoint 7', 130)
+            graph.add_edge('Waypoint 7', 'Health Center', 250)
 
             # Adding new segment: edges with waypoints between Health Center and ECS
-            graph.add_edge('Health Center', 'Waypoint 7', 2)
-            graph.add_edge('Waypoint 7', 'Waypoint 8', 2)
-            graph.add_edge('Waypoint 8', 'Waypoint 9', 1)
-            graph.add_edge('Waypoint 9', 'Waypoint 10', 1)
-            graph.add_edge('Waypoint 10', 'Waypoint 11', 1)
-            graph.add_edge('Waypoint 11', 'ECS', 1)
+            graph.add_edge('Health Center', 'Waypoint 7', 250)
+            graph.add_edge('Waypoint 7', 'Waypoint 8', 180)
+            graph.add_edge('Waypoint 8', 'Waypoint 9', 100)
+            graph.add_edge('Waypoint 9', 'Waypoint 10', 90)
+            graph.add_edge('Waypoint 10', 'Waypoint 11', 110)
+            graph.add_edge('Waypoint 11', 'ECS', 200)
 
 
             # Adding new segment: edges with waypoints between ecs and ec
-            graph.add_edge('ECS', 'Waypoint 38', 1)
-            graph.add_edge('Waypoint 38', 'Waypoint 39', 1)
-            graph.add_edge('Waypoint 39', 'Waypoint 40', 0)
-            graph.add_edge('Waypoint 40', 'Waypoint 41', 2)
-            graph.add_edge('Waypoint 41', 'Waypoint 42', 1)
-            graph.add_edge('Waypoint 42', 'Waypoint 43', 0)
-            graph.add_edge('Waypoint 43', 'Waypoint 44', 0)
-            graph.add_edge('Waypoint 44', 'EC', 1)
+            graph.add_edge('ECS', 'Waypoint 38', 80)
+            graph.add_edge('Waypoint 38', 'Waypoint 39', 200)
+            graph.add_edge('Waypoint 39', 'Waypoint 40', 30)
+            graph.add_edge('Waypoint 40', 'Waypoint 41', 90)
+            graph.add_edge('Waypoint 41', 'Waypoint 42', 60)
+            graph.add_edge('Waypoint 42', 'Waypoint 43', 120)
+            graph.add_edge('Waypoint 43', 'Waypoint 44', 90)
+            graph.add_edge('Waypoint 44', 'EC', 150)
 
             # Adding new segment: edges with waypoints between Aboretum and Health Center
-            graph.add_edge('Arboretum', 'Waypoint 54', 2)
-            graph.add_edge('Waypoint 54', 'Waypoint 55', 1)
-            graph.add_edge('Waypoint 55', 'Waypoint 56', 2)
-            graph.add_edge('Waypoint 56', 'Waypoint 57', 1)
-            graph.add_edge('Waypoint 57', 'Waypoint 58', 1)
-            graph.add_edge('Waypoint 58', 'Waypoint 59', 2)
-            graph.add_edge('Waypoint 59', 'Waypoint 60', 2)
-            graph.add_edge('Waypoint 60', 'Waypoint 61', 1)
-            graph.add_edge('Waypoint 61', 'Waypoint 62', 1)
-            graph.add_edge('Waypoint 62', 'Waypoint 63', 1)
-            graph.add_edge('Waypoint 63', 'Waypoint 64', 1)
-            graph.add_edge('Waypoint 64', 'Health Center', 1)
+            graph.add_edge('Arboretum', 'Waypoint 54', 290)
+            graph.add_edge('Waypoint 54', 'Waypoint 55', 150)
+            graph.add_edge('Waypoint 55', 'Waypoint 56', 250)
+            graph.add_edge('Waypoint 56', 'Waypoint 57', 90)
+            graph.add_edge('Waypoint 57', 'Waypoint 58', 90)
+            graph.add_edge('Waypoint 58', 'Waypoint 59', 60)
+            graph.add_edge('Waypoint 59', 'Waypoint 60', 500)
+            graph.add_edge('Waypoint 60', 'Waypoint 61', 150)
+            graph.add_edge('Waypoint 61', 'Waypoint 62', 600)
+            graph.add_edge('Waypoint 62', 'Waypoint 63', 300)
+            graph.add_edge('Waypoint 63', 'Waypoint 64', 130)
+            graph.add_edge('Waypoint 64', 'Health Center', 120)
 
             # Adding new segment: edges with waypoints between aboretum and ecs
-            graph.add_edge('Waypoint 63', 'Waypoint 65', 2)
-            graph.add_edge('Waypoint 65', 'Waypoint 66', 1)
-            graph.add_edge('Waypoint 66', 'Waypoint 9', 1)
-            graph.add_edge('Waypoint 9', 'Waypoint 10', 1)
-            graph.add_edge('Waypoint 10', 'Waypoint 11', 1)
-            graph.add_edge('Waypoint 11', 'ECS', 1)
+            graph.add_edge('Waypoint 63', 'Waypoint 65', 230)
+            graph.add_edge('Waypoint 65', 'Waypoint 66', 90)
+            graph.add_edge('Waypoint 66', 'Waypoint 9', 30)
+            graph.add_edge('Waypoint 9', 'Waypoint 10', 90)
+            graph.add_edge('Waypoint 10', 'Waypoint 11', 120)
+            graph.add_edge('Waypoint 11', 'ECS', 200)
 
             # Parking LOTS - might need adjustments
             # Adding new segment: edges with waypoints between lot d and waypoint3
-            graph.add_edge('Lot D Parking', 'Waypoint 67', 1)
+            graph.add_edge('Lot D Parking', 'Waypoint 67', 150)
             graph.add_edge('Waypoint 67', 'Waypoint 68', 1)
-            graph.add_edge('Waypoint 68', 'Waypoint 69', 1)
-            graph.add_edge('Waypoint 69', 'Waypoint 3', 1)
-            graph.add_edge('Waypoint 3', 'REC Center', 1)
+            graph.add_edge('Waypoint 68', 'Waypoint 69', 50)
+            graph.add_edge('Waypoint 69', 'Waypoint 3', 250)
+            graph.add_edge('Waypoint 3', 'REC Center', 140)
 
             # Adding new segment: edges with waypoints between nutwood and waypoint22
-            graph.add_edge('Nutwood Parking', 'Waypoint 70', 2)
-            graph.add_edge('Waypoint 70', 'Waypoint 71', 2)
-            graph.add_edge('Waypoint 71', 'Waypoint 72', 1)
-            graph.add_edge('Waypoint 72', 'Waypoint 22', 0)
+            graph.add_edge('Nutwood Parking', 'Waypoint 70', 170)
+            graph.add_edge('Waypoint 70', 'Waypoint 71', 110)
+            graph.add_edge('Waypoint 71', 'Waypoint 72', 40)
+            graph.add_edge('Waypoint 72', 'Waypoint 22', 110)
 
             # Adding new segment: edges with waypoints between nutwood and waypoint23
-            graph.add_edge('Nutwood Parking', 'Waypoint 70', 2)
-            graph.add_edge('Waypoint 70', 'Waypoint 71', 2)
-            graph.add_edge('Waypoint 71', 'Waypoint 23', 1)
+            graph.add_edge('Nutwood Parking', 'Waypoint 70', 170)
+            graph.add_edge('Waypoint 70', 'Waypoint 71', 110)
+            graph.add_edge('Waypoint 71', 'Waypoint 23', 230)
 
             # Adding new segment: edges with waypoints between east parking and waypoint 38
-            graph.add_edge('East Side Parking', 'Waypoint 73', 1)
-            graph.add_edge('Waypoint 73', 'Waypoint 74', 1)
-            graph.add_edge('Waypoint 74', 'Waypoint 75', 2)
-            graph.add_edge('Waypoint 75', 'Waypoint 38', 1)
+            graph.add_edge('East Side Parking', 'Waypoint 73', 130)
+            graph.add_edge('Waypoint 73', 'Waypoint 74', 40)
+            graph.add_edge('Waypoint 74', 'Waypoint 75', 90)
+            graph.add_edge('Waypoint 75', 'Waypoint 38', 60)
 
             # Adding new segment: edges with waypoints between east parking and H-S Sciences
-            graph.add_edge('East Side Parking', 'Waypoint 73', 1)
-            graph.add_edge('Waypoint 73', 'Waypoint 76', 3)
-            graph.add_edge('Waypoint 76', 'Waypoint 77', 4)
-            graph.add_edge('Waypoint 77', 'H-S Sciences', 1)
+            graph.add_edge('East Side Parking', 'Waypoint 73', 130)
+            graph.add_edge('Waypoint 73', 'Waypoint 76', 200)
+            graph.add_edge('Waypoint 76', 'Waypoint 77',190)
+            graph.add_edge('Waypoint 77', 'H-S Sciences', 85)
 
             # path between waypoint9 and waypoint 44
-            graph.add_edge('Waypoint 9', 'Waypoint 41', 1)
-            
-
-
+            graph.add_edge('Waypoint 9', 'Waypoint 41', 120)
 
 
             # graph.add_edge('EC', 'H-S Sciences', 3)
@@ -386,7 +383,9 @@ class App(customtkinter.CTk):
                     pathbfs.append(self.map_widget.set_path([bfs_path[n].position, bfs_path[n+1].position],width=8, color= 'purple'))
 
             elif algorithm == "Dijkstra":
-                shortest_distance, shortest_path = dijkstra(graph, start, end)            
+                shortest_distance, shortest_path = dijkstra(graph, start, end)    
+                #Display weight of the Dijkstra path in Feet(rough estimate), we can display it a different way if needed
+                messagebox.showinfo("Dijkstra's Algorithm", "Distance: " + str(shortest_distance) + " ft" ) 
                 dijkstrapath = []
                 for i in range(len(shortest_path)):
                     for j in range(len(markers)):
