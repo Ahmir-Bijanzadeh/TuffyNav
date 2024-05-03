@@ -406,9 +406,9 @@ class App(customtkinter.CTk):
                                 dfs_path.append(markers[j])
                         
                 for n in range(len(dfs_path)-1):
-                    pathdfs.append(self.map_widget.set_path([dfs_path[n].position, dfs_path[n+1].position],width=9, color= 'pink'))
-                else:
-                    messagebox.showerror("Error", "Select a Valid Algorithm")
+                    pathdfs.append(self.map_widget.set_path([dfs_path[n].position, dfs_path[n+1].position],width=8, color= 'green'))
+            else:
+                messagebox.showerror("Error", "Select a Valid Algorithm")
 
 
         
