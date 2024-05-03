@@ -4,7 +4,7 @@ import os
 from PIL import Image, ImageTk
 import heapq
 from collections import deque
-
+from tkinter import messagebox
 from PIL import Image
 
 
@@ -152,13 +152,17 @@ class App(customtkinter.CTk):
             # Adding new segment: edges with waypoints between ec and h-s sciences
             graph.add_edge('EC', 'Waypoint 36', 1)
             graph.add_edge('Waypoint 36', 'Waypoint 53', 1)
-            graph.add_edge('Waypoint 53', 'H-S Sciences', 1)
+            graph.add_edge('Waypoint 53', 'H-S Sciences', 0)
+
+            # pollak to h-s sciences
+            graph.add_edge('Waypoint 37', 'Waypoint 78', 1)
+            graph.add_edge('Waypoint 78', 'Waypoint 32', 0)
             
             # Adding new segment: edges with waypoints between rec center and tsu
             # graph.add_edge('REC Center', 'Waypoint 3', 1)
-            graph.add_edge('Waypoint 3', 'Waypoint 51', 2)
-            graph.add_edge('Waypoint 51', 'Waypoint 52', 3)
-            graph.add_edge('Waypoint 52', 'TSU', 0)
+            graph.add_edge('Waypoint 3', 'Waypoint 51', 3)
+            graph.add_edge('Waypoint 51', 'Waypoint 52', 4)
+            graph.add_edge('Waypoint 52', 'TSU', 1)
 
 
             # Adding new segment: edges with waypoints between art center and pollak library
@@ -182,15 +186,18 @@ class App(customtkinter.CTk):
 
             # Adding new segment: edges with waypoints between ec and art center
             graph.add_edge('EC', 'Waypoint 36', 1)
-            graph.add_edge('Waypoint 36', 'Waypoint 37', 2)
+            graph.add_edge('Waypoint 36', 'Waypoint 37', 1)
             graph.add_edge('Waypoint 37', 'Waypoint 34', 1)
             graph.add_edge('Waypoint 34', 'Waypoint 35', 1)
             graph.add_edge('Waypoint 35', 'Waypoint 24', 2)
             graph.add_edge('Waypoint 24', 'Waypoint 23', 2)
             graph.add_edge('Waypoint 23', 'Art Center', 4)
 
+            # pollak to waypoint 37
+            graph.add_edge('Pollak Library', 'Waypoint 37', 4)
+
             # Adding new segment: edges with waypoints between h-s sciences and mccarthy hall
-            graph.add_edge('H-S Sciences', 'Waypoint 32', 1)
+            graph.add_edge('H-S Sciences', 'Waypoint 32', 0)
             graph.add_edge('Waypoint 32', 'Waypoint 33', 1)
             graph.add_edge('Waypoint 33', 'Waypoint 34', 0)
             graph.add_edge('Waypoint 34', 'Waypoint 35', 1)
@@ -198,12 +205,12 @@ class App(customtkinter.CTk):
             graph.add_edge('Waypoint 24', 'McCarthy Hall', 1)
 
             # Adding new segment: edges with waypoints between mihaylo and university hall
-            graph.add_edge('Mihaylo Hall', 'Waypoint 30', 1)
-            graph.add_edge('Waypoint 30', 'Waypoint 31', 0)
+            graph.add_edge('Mihaylo Hall', 'Waypoint 30', 2)
+            graph.add_edge('Waypoint 30', 'Waypoint 31', 1)
             graph.add_edge('Waypoint 31', 'University Hall', 1)
 
             # Adding new segment: edges with waypoints between langsdorf and mihaylo
-            graph.add_edge('Langsdorf Hall', 'Waypoint 29', 1)
+            graph.add_edge('Langsdorf Hall', 'Waypoint 29', 0)
             graph.add_edge('Waypoint 29', 'Waypoint 30', 2)
             graph.add_edge('Waypoint 30', 'Mihaylo Hall', 1)
 
@@ -246,7 +253,7 @@ class App(customtkinter.CTk):
             # Adding new segment: edges with waypoints between Gym and Pollak Library
             # graph.add_edge('Gym', 'Waypoint 5', 1)  # Assuming weight is 1
             graph.add_edge('Waypoint 5', 'Waypoint 16', 1)
-            graph.add_edge('Waypoint 16', 'Pollak Library', 1)
+            graph.add_edge('Waypoint 16', 'Pollak Library', 3)
 
             # Adding new segment: edges with waypoints between Health Center and Pollak
             graph.add_edge('Health Center', 'Waypoint 7', 2)
@@ -267,7 +274,7 @@ class App(customtkinter.CTk):
             # graph.add_edge('Waypoint 3', 'Waypoint 2', 118)
             # graph.add_edge('Waypoint 2', 'Waypoint 1', 157)
             graph.add_edge('Waypoint 1', 'Waypoint 4', 4)
-            graph.add_edge('Waypoint 4', 'Pollak Library', 6)
+            graph.add_edge('Waypoint 4', 'Pollak Library', 1)
 
             # Adding new segment: edges with waypoints between Gym and Health Center
             graph.add_edge('Gym', 'Waypoint 5', 2)
@@ -328,12 +335,12 @@ class App(customtkinter.CTk):
             graph.add_edge('Nutwood Parking', 'Waypoint 70', 2)
             graph.add_edge('Waypoint 70', 'Waypoint 71', 2)
             graph.add_edge('Waypoint 71', 'Waypoint 72', 1)
-            graph.add_edge('Waypoint 72', 'Waypoint 22', 1)
+            graph.add_edge('Waypoint 72', 'Waypoint 22', 0)
 
             # Adding new segment: edges with waypoints between nutwood and waypoint23
             graph.add_edge('Nutwood Parking', 'Waypoint 70', 2)
             graph.add_edge('Waypoint 70', 'Waypoint 71', 2)
-            graph.add_edge('Waypoint 71', 'Waypoint 23', 3)
+            graph.add_edge('Waypoint 71', 'Waypoint 23', 1)
 
             # Adding new segment: edges with waypoints between east parking and waypoint 38
             graph.add_edge('East Side Parking', 'Waypoint 73', 1)
@@ -356,9 +363,13 @@ class App(customtkinter.CTk):
 
             # graph.add_edge('EC', 'H-S Sciences', 3)
 
-            #saves user selection to start and end
+             #saves user selection to start and end
             start = self.optionmenu_startLoc.get()
             end = self.optionmenu_endLoc.get()
+
+            if start == 'Starting Location' or end == 'End Location':
+                #CTkMessagebox(title="Error", message="Pick Valid Locations!", icon = "error.png")
+                messagebox.showerror("Error", "Select a Valid Location")
 
             algorithm = self.optionmenu_algo.get()
 
@@ -382,6 +393,8 @@ class App(customtkinter.CTk):
                         
                 for n in range(len(dijkstrapath)-1):
                     pathdij.append(self.map_widget.set_path([dijkstrapath[n].position, dijkstrapath[n+1].position],width=8, color= 'red'))
+            else:
+                messagebox.showerror("Error", "Select a Valid Algorithm")
 
 
         
@@ -881,6 +894,14 @@ class App(customtkinter.CTk):
         # path between waypoint9 and waypoint 41
         path_34 = self.map_widget.set_path([waypoint9.position, waypoint41.position],width=5)
 
+        # path between pollak and waypoint37
+        path_35 = self.map_widget.set_path([Pollak.position, waypoint37.position],width=5)
+
+        # pollak - h-s science
+        waypoint78 = self.map_widget.set_marker(33.88079910218166, -117.88460016186403, icon=transparent_icon_image, text="Waypoint 78", text_color=background_color, font=("Helvetica", tiny_font_size))
+        path_36 = self.map_widget.set_path([waypoint37.position, waypoint78.position, waypoint32.position],width=5)
+
+
         markers = [ mihaylo, langsdorf, university_hall, McCarthy, dan_black, art_center, h_s_science, ec, 
                         Pollak, Visual_Arts, tsu, ecs, REC_Center, Gym, Health_Center, waypoint1, waypoint2, waypoint3, 
                         waypoint4, waypoint5, waypoint6, waypoint7, waypoint8, waypoint9, waypoint10, waypoint11, waypoint12,
@@ -889,13 +910,24 @@ class App(customtkinter.CTk):
                         waypoint39, waypoint40, waypoint41, waypoint42, waypoint43, waypoint44, waypoint45, waypoint46, waypoint47, waypoint48, waypoint49, waypoint50, waypoint51, 
                         waypoint52, waypoint53, waypoint54, waypoint55, waypoint56, waypoint57, waypoint58, waypoint59, waypoint60, waypoint61, waypoint62, waypoint63, waypoint64,
                         waypoint65, waypoint66, waypoint67, waypoint68, waypoint69, waypoint70, waypoint71, waypoint72, waypoint73, waypoint74, waypoint75, waypoint76, waypoint77, 
-                        arboretum, lotD, nutwoodpark, eastParking,]
+                        arboretum, lotD, nutwoodpark, eastParking,waypoint78]
 
         # this path is good dont remove or adjust
         path_7 = self.map_widget.set_path([university_hall.position, h_s_science.position],width=5)
         placeholder17 = self.map_widget.set_marker(33.8802421, -117.8841281, icon=transparent_icon_image, text="200ft", text_color='blue', font=("Helvetica", 17, 'bold'))
 
         
+        #self.button_search = customtkinter.CTkButton(master=self.frame_right,text="Search",width=90,command=self.search_event)
+        #self.button_search.grid(row=0, column=1, sticky="w", padx=(12, 0), pady=12)
+
+        # Set default values for map/settings 
+        #use address OR pos + zoom, addy+zoom returns an error
+        #self.map_widget.set_address("california state university fullerton")
+        self.map_widget.set_position(33.88138573960986, -117.88552840447254)
+        self.map_widget.set_zoom(17)
+        self.map_option_menu.set("OpenStreetMap")
+        self.appearance_mode_optionemenu.set("Dark")
+
         #self.button_search = customtkinter.CTkButton(master=self.frame_right,text="Search",width=90,command=self.search_event)
         #self.button_search.grid(row=0, column=1, sticky="w", padx=(12, 0), pady=12)
 
